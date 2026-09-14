@@ -6,20 +6,7 @@ Cisco Packet Tracerを使用して、4つのASで構成したeBGPネットワー
 
 ## 構成
 
-```text
-PC1
- |
-R1 (AS65001)
- | \
- |  \
-R2  R3
-AS65002  AS65003
- |        |
- |        |
- R4 (AS65004)
- |
-PC2
-```
+![BGP Multi-AS Network Topology](docs/network-topology.png)
 
 R1からR4まで、以下の2つの経路を構成しています。
 
@@ -170,6 +157,7 @@ bgp-multi-as-hands-on/
 │   └── R4.txt
 ├── docs/
 │   ├── network-design.md
+│   ├── network-topology.png
 │   └── test-results.md
 ├── evidence/
 │   ├── 01-normal-bgp.png
