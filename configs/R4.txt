@@ -1,0 +1,22 @@
+hostname R4
+
+interface GigabitEthernet0/0
+ description TO-PC2
+ ip address 192.168.40.1 255.255.255.0
+ no shutdown
+
+interface GigabitEthernet0/1
+ description TO-R2
+ ip address 10.0.24.2 255.255.255.252
+ no shutdown
+
+interface GigabitEthernet0/2
+ description TO-R3
+ ip address 10.0.34.2 255.255.255.252
+ no shutdown
+
+router bgp 65004
+ bgp router-id 4.4.4.4
+ neighbor 10.0.24.1 remote-as 65002
+ neighbor 10.0.34.1 remote-as 65003
+ network 192.168.40.0 mask 255.255.255.0
