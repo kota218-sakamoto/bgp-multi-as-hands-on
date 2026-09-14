@@ -132,6 +132,32 @@ ping
 - [R3](configs/R3.txt)
 - [R4](configs/R4.txt)
 
+## Evidence
+
+### 1. 通常時のBGP経路
+
+R1でR2経由がベストパスとして選択され、R3経由も有効な代替経路として保持されていることを確認。
+
+![通常時のBGP経路](evidence/01-normal-bgp.png)
+
+### 2. リンク障害時の経路切り替え
+
+R1-R2間リンク停止後、R3経由へベストパスが切り替わり、ルーティングテーブルのNext Hopも変更されたことを確認。
+
+![リンク障害時の経路切り替え](evidence/02-failover-route.png)
+
+### 3. 障害時の疎通確認
+
+R1-R2間リンク障害中も、PC1からPC2へのpingが成功し、通信を継続できることを確認。
+
+![障害時の疎通確認](evidence/03-failover-ping.png)
+
+### 4. リンク復旧後のBGP経路
+
+R1-R2間リンク復旧後、R2経由とR3経由の両方のBGP経路が再度学習されたことを確認。
+
+![リンク復旧後のBGP経路](evidence/04-recovery-bgp.png)
+
 ## リポジトリ構成
 
 ```text
@@ -145,6 +171,12 @@ bgp-multi-as-hands-on/
 ├── docs/
 │   ├── network-design.md
 │   └── test-results.md
+├── evidence/
+│   ├── 01-normal-bgp.png
+│   ├── 02-failover-route.png
+│   ├── 03-failover-ping.png
+│   └── 04-recovery-bgp.png
 └── packet-tracer/
     └── bgp-multi-as.pkt
+
 ```
